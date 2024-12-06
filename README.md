@@ -89,22 +89,6 @@ The **Personal Restaurant Guide** is a user-friendly Android application designe
 
 ---
 
-## Screenshots
-
-### Main Screen
-The main dashboard featuring navigation cards for key functionalities like adding and viewing restaurants.
-
-### Restaurant List
-A scrollable list displaying all added restaurants, with search functionality to filter results.
-
-### Restaurant Details
-Detailed view of a restaurant, with options to edit or delete.
-
-### Map Screen
-Interactive Google Map showcasing restaurant locations and the user's current location.
-
----
-
 ## Getting Started
 
 ### Prerequisites
