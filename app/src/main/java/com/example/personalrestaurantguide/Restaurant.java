@@ -1,5 +1,5 @@
 package com.example.personalrestaurantguide;
-
+// by civan M
 public class Restaurant {
     private int id;
     private String name;
