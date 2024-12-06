@@ -1,86 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    android:background="@color/white"
+    android:background="@drawable/gradient_background"
+    android:padding="0dp"
+    android:importantForAutofill="no"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <!-- Yukarıya Boşluk Eklemek için Spacer -->
-    <View
-        android:id="@+id/top_space"
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/search_bar"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:hint="Search restaurants..."
+        android:inputType="textNoSuggestions"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/search"
+        android:drawablePadding="8dp"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:importantForAutofill="no"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="143dp"
-        android:layout_height="115dp"
-        android:contentDescription="App Logo"
-        android:src="@drawable/res"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_space" />
 
-    <!-- Uygulama Adı -->
-    <TextView
-        android:id="@+id/tv_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Personal Restaurant Guide"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/logo_image"
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Uygulama Açıklama Metni -->
-    <TextView
-        android:id="@+id/tv_app_description"
+
+
+    <!-- Horizontal ScrollView -->
+    <HorizontalScrollView
+        android:id="@+id/category_scroll"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Discover, manage, and learn about your favorite restaurants with ease."
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+        android:layout_margin="16dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-    <!-- Restoran Listesi Kartı -->
+            <!-- Category 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/fastfood"
+                        android:contentDescription="Fast Food Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fast Food"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/cafe"
+                        android:contentDescription="Cafe Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cafe"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/pizza"
+                        android:contentDescription="Italian Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Italian"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category 4 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/cake"
+                        android:contentDescription="Cake Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cake"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Add more categories if needed -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Header Layout -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/category_scroll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Restaurant Guide"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_app_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discover, manage, and explore restaurants effortlessly."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- View Restaurants Button -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view_restaurants"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        android:backgroundTint="@color/purple_100"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_description"
+        app:layout_constraintTop_toBottomOf="@id/header_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:id="@+id/icon_restaurant"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:src="@drawable/restaurant"
                 android:contentDescription="Restaurant Icon" />
 
@@ -88,81 +269,93 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View Restaurants"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp" />
+                android:layout_marginStart="16dp"
+                android:gravity="center" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Restoran Ekle Kartı -->
+    <!-- Add Restaurant Button -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_add_restaurant"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         android:layout_margin="16dp"
-        android:layout_marginTop="36dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        android:backgroundTint="@color/purple_100"
         app:layout_constraintTop_toBottomOf="@id/card_view_restaurants"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:id="@+id/icon_add"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:src="@drawable/add"
-                android:contentDescription="Add Restaurant Icon" />
+                android:contentDescription="Add Icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Restaurant"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp" />
+                android:layout_marginStart="16dp"
+                android:gravity="center" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- About Kartı -->
+    <!-- About Button -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_about"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         android:layout_margin="16dp"
-        android:layout_marginTop="36dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        android:backgroundTint="@color/purple_100"
         app:layout_constraintTop_toBottomOf="@id/card_add_restaurant"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:orientation="vertical">
+            android:padding="16dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:contentDescription="About Icon"
-                android:src="@drawable/info" />
+                android:id="@+id/icon_about"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/info"
+                android:contentDescription="Info Icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
                 android:text="About"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,9 +5,12 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    android:layout_marginBottom="12dp"
+    android:layout_marginTop="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    android:background="#FFFFFF"
+    app:cardBackgroundColor="#FAFAFA">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,40 +18,183 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Restaurant Name -->
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="282dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Restaurant Name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:textColor="#FF5722"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_address"
+        <!-- Restaurant Address -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
-            android:layout_marginBottom="4dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
 
-        <TextView
-            android:id="@+id/tv_phone"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/location"
+                android:layout_marginEnd="8dp"
+                app:tint="#757575" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 Main Street, City"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+
+
+        <!-- Phone -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone"
-            android:layout_marginBottom="4dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
 
-        <TextView
-            android:id="@+id/tv_description"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/phone"
+                android:layout_marginEnd="8dp"
+                app:tint="#757575" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1 (234) 567-890"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+
+        <!-- Description -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:layout_marginBottom="4dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
-        <TextView
-            android:id="@+id/tv_rating"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/description"
+                android:layout_marginEnd="8dp"
+                app:tint="#757575" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A cozy restaurant with delicious meals."
+                android:textColor="#616161"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Rating -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating: 5/5" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/star"
+                android:layout_marginEnd="4dp"
+                app:tint="#FF9800" />
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5/5"
+                android:textColor="#FF9800"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!-- Share Buttons -->
+        <!-- Share Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:id="@+id/btn_share_facebook"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/facebook"
+                android:contentDescription="Share on Facebook"
+                android:layout_marginEnd="16dp"
+                app:tint="#3b5998" />
+
+            <ImageView
+                android:id="@+id/btn_share_twitter"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/twitter"
+                android:contentDescription="Share on Twitter"
+                android:layout_marginEnd="16dp"
+                app:tint="#1DA1F2" />
+
+            <ImageView
+                android:id="@+id/btn_share_pinterest"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/pinterest"
+                android:contentDescription="Share on Pinterest"
+                android:layout_marginEnd="16dp"
+                app:tint="#E1306C" />
+
+            <ImageButton
+                android:id="@+id/button_open_map"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/map"
+                android:contentDescription="Open Map"
+                android:layout_marginEnd="0dp"
+                app:tint="#4CAF50" />
+        </LinearLayout>
+
     </LinearLayout>
+    <!-- Düzenle ve Silme için butonlar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/edit"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="edit"
+            app:tint="#2196F3" />
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/delete"
+            android:contentDescription="delete"
+            android:layout_marginEnd="12dp"
+            app:tint="#F44336" />
+    </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>
