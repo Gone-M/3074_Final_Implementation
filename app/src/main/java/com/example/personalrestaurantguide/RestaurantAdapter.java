@@ -68,7 +68,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             }
         });
 
-        // Harita Aç Butonu İşlemi
         holder.mapButton.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), MapActivity.class);
             intent.putExtra("restaurant_name", restaurant.getName());
