@@ -1,5 +1,5 @@
 package com.example.personalrestaurantguide;
-// by civan
+// by civan M
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
