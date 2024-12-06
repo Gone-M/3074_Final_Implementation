@@ -1,5 +1,5 @@
 package com.example.personalrestaurantguide;
-
+// by civan M
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
